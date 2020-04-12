@@ -1,0 +1,63 @@
+﻿<Window x:Class="CSV___JSon_Converter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSV___JSon_Converter"
+        mc:Ignorable="d"
+        Title="CSV / Json Converter" Height="450" Width="800" WindowState="Maximized">
+
+    <Window.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Margin" Value="5 5 5 5"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="MinWidth" Value="70"/>
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+
+        <Style x:Key="richTxtStyle" TargetType="RichTextBox">
+            <Setter Property="Margin" Value="5 5 5 5"/>
+        </Style>
+
+        <Style TargetType="MenuItem">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#FFFAFDFD">
+            <MenuItem Header="File">
+                <MenuItem Name="menuOpen" Header="Open File" Click="menuOpen_Click"/>
+                <MenuItem Name="menuQuit" Header="Quit" Click="menuQuit_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Label Grid.Row="1" Grid.Column="0" FontWeight="Bold" FontSize="20" Content="CSV:"/>
+        <RichTextBox x:Name="txtRichCSV" Grid.Row="2" Grid.Column="0" Style="{ StaticResource richTxtStyle}" Block.LineHeight="6"/>
+
+        <Label Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="20" Content="Json:"/>
+        <RichTextBox x:Name="txtRichJson" Grid.Row="2" Grid.Column="1" Style="{ StaticResource richTxtStyle}"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+            <Button x:Name="btnCsvConvert" Content="Convert" Style="{StaticResource btnStyle}" Click="btnCsvConvert_Click"/>
+            <Button x:Name="btnCsvCopy" Content="Copy" Style="{ StaticResource btnStyle}" Click="btnCsvCopy_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <Button x:Name="btnJsonConvert" Content="Convert" Style="{StaticResource btnStyle}" Click="btnJsonConvert_Click"/>
+            <Button x:Name="btnJsonCopy" Content="Copy" Style="{ StaticResource btnStyle}" Click="btnJsonCopy_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
